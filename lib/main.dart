@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_app/constants.dart';
 import 'package:my_app/models/Course.dart';
 
+import 'components/cards/explore_course_list.dart';
 import 'components/cards/recent_course_card.dart';
 import 'components/homescreen_navibar.dart';
 import 'components/recent_course_list.dart';
@@ -63,73 +64,9 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-class ExploreCourseList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 20.0),
-      child: Container(
-        height: 120,
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: EdgeInsets.only(
-                left: index == 0 ? 20.0 : 0.0,
-                right: 30.0,
-              ),
-              child: ExploreCourseCard(course: exploreCourses[index]),
-            );
-          },
-          itemCount: exploreCourses.length,
-        ),
 
-      ),
-    );
-  }
-}
 
-class ExploreCourseCard extends StatelessWidget {
 
-  ExploreCourseCard({@required this.course});
-
-  final Course course;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 280.0,
-      height: 120.0,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30.0),
-        gradient: course.background,
-        boxShadow: [
-          BoxShadow(blurRadius: 10.0, color: course.background.colors[0], offset: Offset(0, 10)),
-        ]
-      ),
-      child: Padding(
-        padding: EdgeInsets.only(left: 12.0),
-        child: Row (
-          children: [
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(course.courseSubtitle, style: kCardSubtitleStyle,),
-                  SizedBox(height: 6,),
-                  Text(course.courseTitle, style: kCardTitleStyle,),
-                ], 
-              ),
-            ),
-            Image.asset('asset/illustrations/${course.illustration}', fit: BoxFit.cover,),
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 
 
