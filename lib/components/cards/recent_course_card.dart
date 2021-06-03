@@ -45,7 +45,7 @@ class RecentCourseCard extends StatelessWidget {
                     ),
                     Expanded(
                       child: Image.asset(
-                        'asset/illustrations/${course.illustration}.png',
+                        'asset/illustrations/${course.illustration}',
                         fit: BoxFit.cover,
                       ),
                     )
@@ -66,7 +66,7 @@ class RecentCourseCard extends StatelessWidget {
                     BoxShadow(blurRadius: 16.0, color: kShadowColor, offset: Offset(0, 4)),
                   ]
               ),
-              child: Image.asset('asset/logos/${course.logo}.png'),
+              child: Image.asset('asset/logos/${course.logo}'),
               padding: EdgeInsets.all(12.0),
             ),
           )

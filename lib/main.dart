@@ -74,9 +74,15 @@ class ExploreCourseList extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           shrinkWrap: true,
           itemBuilder: (context, index) {
-            return ExploreCourseCard(course: exploreCourses[index]);
+            return Padding(
+              padding: EdgeInsets.only(
+                left: index == 0 ? 20.0 : 0.0,
+                right: 30.0,
+              ),
+              child: ExploreCourseCard(course: exploreCourses[index]),
+            );
           },
-          itemCount: recentCourses.length,
+          itemCount: exploreCourses.length,
         ),
 
       ),
@@ -96,7 +102,11 @@ class ExploreCourseCard extends StatelessWidget {
       width: 280.0,
       height: 120.0,
       decoration: BoxDecoration(
-        gradient: course.background
+        borderRadius: BorderRadius.circular(30.0),
+        gradient: course.background,
+        boxShadow: [
+          BoxShadow(blurRadius: 10.0, color: course.background.colors[0], offset: Offset(0, 10)),
+        ]
       ),
       child: Padding(
         padding: EdgeInsets.only(left: 12.0),
@@ -110,11 +120,10 @@ class ExploreCourseCard extends StatelessWidget {
                   Text(course.courseSubtitle, style: kCardSubtitleStyle,),
                   SizedBox(height: 6,),
                   Text(course.courseTitle, style: kCardTitleStyle,),
-
-                ],
+                ], 
               ),
             ),
-
+            Image.asset('asset/illustrations/${course.illustration}', fit: BoxFit.cover,),
           ],
         ),
       ),
